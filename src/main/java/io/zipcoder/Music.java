@@ -9,6 +9,24 @@ public class Music {
     }
 
     public Integer selection(Integer startIndex, String selection){
-        return null;
+        int minNumberPressed = 0;
+        //search for the selection up
+        for(int i = 1; i<playList.length; i++){
+            if(playList[(startIndex + i)% playList.length].equals(selection)){
+                minNumberPressed = i;
+                break;
+            }
+        }
+        //search for the song selection down
+        for(int i= 1; i< playList.length; i++){
+            if(playList[(playList.length + startIndex - i)% playList.length].equals(selection)){
+                if(i< minNumberPressed){
+                    minNumberPressed = i;
+                }
+                break;
+            }
+        }
+        return  minNumberPressed;
+
     }
 }
